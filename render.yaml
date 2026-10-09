@@ -1,0 +1,30 @@
+services:
+  # Backend API Web Service
+  - type: web
+    name: godown-manager-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        value: mongodb+srv://dommalapatiakash35_db_user:Bevarage123@stockb.j1z4pwm.mongodb.net/godown_stock?retryWrites=true&w=majority&appName=StockB
+      - key: JWT_SECRET
+        value: super_secret_jwt_key_godown_2026_change_in_production
+      - key: ADMIN_USER
+        value: admin
+      - key: ADMIN_PASSWORD
+        value: admin123
+
+  # Frontend Static Site
+  - type: static
+    name: godown-manager-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
