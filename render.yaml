@@ -2,7 +2,7 @@ services:
   # Backend API Web Service
   - type: web
     name: godown-manager-backend
-    env: node
+    runtime: node
     rootDir: backend
     buildCommand: npm install
     startCommand: node src/server.js
@@ -21,6 +21,7 @@ services:
   # Frontend Static Site
   - type: static
     name: godown-manager-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
