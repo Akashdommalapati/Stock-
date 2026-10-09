@@ -19,7 +19,7 @@ services:
         value: admin123
 
   # Frontend Static Site
-  - type: static
+  - type: web
     name: godown-manager-frontend
     runtime: static
     rootDir: frontend
